@@ -1,0 +1,52 @@
+.diasDaSemana{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas, cada uma com largura igual */
+    gap: 10px;
+    text-transform: uppercase;
+    .semana{
+        text-align: center;
+    }
+}
+.calendario--main{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas, cada uma com largura igual */
+    gap: 10px;
+}
+.start-from-column-1 {
+    grid-column-start: 1; /* Inicia na segunda coluna */
+}
+.start-from-column-2 {
+    grid-column-start: 2; /* Inicia na segunda coluna */
+}
+.start-from-column-3 {
+    grid-column-start: 3; /* Inicia na segunda coluna */
+}
+.start-from-column-4 {
+    grid-column-start: 4; /* Inicia na segunda coluna */
+}
+.start-from-column-5 {
+    grid-column-start: 5; /* Inicia na segunda coluna */
+}
+.start-from-column-6 {
+    grid-column-start: 6; /* Inicia na segunda coluna */
+}
+.start-from-column-7 {
+    grid-column-start: 7; /* Inicia na segunda coluna */
+}
+.dia{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 1px 0px 5px #000 ;
+    position: relative;
+    overflow: hidden;
+}
+.agendado{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    border: 1px rgb(218, 218, 218) solid;
+}

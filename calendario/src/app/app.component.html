@@ -1,0 +1,15 @@
+<div class="diasDaSemana">
+  <div class="semana">domingo</div>
+  <div class="semana">segunda</div>
+  <div class="semana">terça</div>
+  <div class="semana">quarta</div>
+  <div class="semana">quinta</div>
+  <div class="semana">sexta</div>
+  <div class="semana">sabado</div>
+</div>
+<div class="calendario--main">
+  <div *ngFor="let dia of diasNumber()" class="dia" [ngClass]="{'start-from-column-2': dia === 1}">
+    <div>{{ dia }}</div>
+    <div class="agendado"></div>
+  </div>
+</div>
