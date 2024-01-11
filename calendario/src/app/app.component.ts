@@ -19,7 +19,7 @@ export class AppComponent {
     const ultimoDiaMes = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0).getDate();
 
     // dia da semana que começou o mes
-    const primeiroDiaMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+    const primeiroDiaMes = new Date(hoje.getFullYear(), 1);
     const diaDaSemana = primeiroDiaMes.getDay();
     const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
     
@@ -32,9 +32,27 @@ export class AppComponent {
       
     }
 
-    return console.log(ultimoDiaMes, hoje.getDate(),diaDaSemana,diasDaSemana[diaDaSemana], diasDoMes)
+    return console.log("Ultimo dia do mes: "+ ultimoDiaMes +"\n"
+    ,"Hoje: "+ hoje.getDate() +"\n"
+    ,"dia da semana em numero: "+ diaDaSemana +"\n"
+    ,"dia da semana: "+diasDaSemana[diaDaSemana] +"\n"
+    ,"mes atual: "+(hoje.getMonth()+1) +"\n"
+    , "todos dias do mes: "+ diasDoMes)
+  }
+
+  //dia atual
+  diaAtuall():number{
+    const hoje = new Date();
+    return hoje.getDate();
+  }
+
+  //dias da semana em numero
+  getDayColunClass():string  {
+    const hoje = new Date();
+    return `start-from-column-${hoje.getDay()}`;
   }
   
+  //função me retorna a quantidade de dias no mes
   diasNumber(): number[] {
     const hoje = new Date();
     const ultimoDiaMes = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0).getDate();
@@ -48,17 +66,16 @@ export class AppComponent {
     return diasDoMes;
   }
 
+  //
   getDayClass(dia: number): string {
     const hoje = new Date();
     const primeiroDiaMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
-    const diaDaSemana = primeiroDiaMes.getDay();
-    const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
-    return `dia-${dia} start-from-column-${diasDaSemana[diaDaSemana]}`;
+    const diaDaSemanaa = primeiroDiaMes.getDay();
+    const diasDaSemanaa = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    
+    return `dia-${dia} start-from-column-${diasDaSemanaa[diaDaSemanaa]}`;
   }
 
-  getDate(){
-    
-  }
 
   diaAtual = this.diasNoMesAtual();
 }

@@ -8,8 +8,8 @@
   <div class="semana">sabado</div>
 </div>
 <div class="calendario--main">
-  <div *ngFor="let dia of diasNumber()" class="dia" [ngClass]="{'start-from-column-2': dia === 1}">
+  <div *ngFor="let dia of diasNumber()" class="dia"  [ngClass]="{'start-from-column-2': dia === 1}" [ngClass]="{'passou': dia < diaAtuall() }">
     <div>{{ dia }}</div>
     <div class="agendado"></div>
   </div>
-</div>
+</div> 

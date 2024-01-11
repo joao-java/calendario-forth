@@ -11,6 +11,12 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 colunas, cada uma com largura igual */
     gap: 10px;
+    .passou{
+        background: #000;
+        .agendado{
+            display: none;
+        }
+    }
 }
 .start-from-column-1 {
     grid-column-start: 1; /* Inicia na segunda coluna */
