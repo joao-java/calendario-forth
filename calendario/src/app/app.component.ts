@@ -56,5 +56,9 @@ export class AppComponent {
     return `dia-${dia} start-from-column-${diasDaSemana[diaDaSemana]}`;
   }
 
+  getDate(){
+    
+  }
+
   diaAtual = this.diasNoMesAtual();
 }
