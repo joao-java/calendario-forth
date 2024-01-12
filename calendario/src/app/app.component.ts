@@ -75,7 +75,24 @@ export class AppComponent {
     
     return `dia-${dia} start-from-column-${diasDaSemanaa[diaDaSemanaa]}`;
   }
-
-
   diaAtual = this.diasNoMesAtual();
+  
+  showInsert = false;
+  toggleInsert(){
+    this.showInsert = !this.showInsert;
+    console.log("feitoooooooooooooooooooooooo"+this.showInsert);
+  }
+
+  formData = {
+    nome:'re',
+    dia:9,
+    mes:10,
+    sala:11,
+    horaInicial:'1',
+    horaTermino:'321'
+  };
+  enviarFormulario(){
+    console.log('Dados do formulario: '+ this.formData);
+  }
+
 }

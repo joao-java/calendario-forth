@@ -1,15 +1,50 @@
-<div class="diasDaSemana">
-  <div class="semana">domingo</div>
-  <div class="semana">segunda</div>
-  <div class="semana">terça</div>
-  <div class="semana">quarta</div>
-  <div class="semana">quinta</div>
-  <div class="semana">sexta</div>
-  <div class="semana">sabado</div>
-</div>
-<div class="calendario--main">
-  <div *ngFor="let dia of diasNumber()" class="dia"  [ngClass]="{'start-from-column-2': dia === 1}" [ngClass]="{'passou': dia < diaAtuall() }">
-    <div>{{ dia }}</div>
-    <div class="agendado"></div>
+<div id="container">
+  <div class="diasDaSemana">
+    <div class="semana">domingo</div>
+    <div class="semana">segunda</div>
+    <div class="semana">terça</div>
+    <div class="semana">quarta</div>
+    <div class="semana">quinta</div>
+    <div class="semana">sexta</div>
+    <div class="semana">sabado</div>
   </div>
-</div> 
+  <div class="calendario--main">
+    <div *ngFor="let dia of diasNumber()" class="dia"  [ngClass]="{'start-from-column-3': dia === 1}" [ngClass]="{'passou': dia < diaAtuall() }">
+      <div>{{ dia }}</div>
+      <div class="agendado"></div>
+    </div>
+  </div> 
+
+  <section class="section__insert">
+    <div class="insert__container">
+        <div class="insert__button">
+            <button (click)="toggleInsert()" >INSERIR <i class="uil uil-arrow-down insert__buttonIcon" ></i></button>
+        </div>
+
+        <form class="insert__body" [class.show-insert]="showInsert" >
+            <div class="body__data ">
+                <div>
+                    <label for="texto"> Nome: </label>
+                    <input type="text" id="nome">
+                    <label for="diaAtual" > Dia: </label>
+                    <input type="number" id="FdiaAtual" min="1" max="31" >
+                    <label for="diaAtual" > Mes: </label>
+                    <input type="number" id="mes" min="1" max="12" >
+                </div>
+
+                <div>
+                  <label for="Sala"> Sala: </label>
+                  <input type="number" id="sala" min="1" max="4" >
+                    <label for="horaInicio"> Hora Inicio: </label>
+                    <input type="time" id="horaInicio">
+                    <label for="horaTermino"> Hora Termino: </label>
+                    <input type="time" id="horaTermino">
+                </div>
+            </div>
+            <div class="data__insert" >
+                <input  class="button" type="submit" id="enviar" value="Enviar" (click)="enviarFormulario()" >
+            </div>
+        </form>
+    </div>
+</section>
+</div>
