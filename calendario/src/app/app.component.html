@@ -1,3 +1,4 @@
+<app-head></app-head>
 <div id="container">
   <div class="diasDaSemana">
     <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Domingo' }">domingo</div>
@@ -10,16 +11,21 @@
   </div>
   <div class="calendario--main">
     <div *ngFor="let dia of diasNumber()" class="dia " [ngClass]="{'start-from-column-2': dia === 1, 'passou': dia < diaAtuall(), 'dia--atual': dia === diaAtuall() }" >
-      <div id="dia">{{ dia }}</div>
-      <div class="agendado">
+      <div id="dia">
+        {{ dia }}
+       
+      </div>
+
+      <div class="agendado" >
         <div class="agendado--main">
           <div class="agendado--info">
-            <div class="agendado--info--sala"><span>Sala: </span> <p>1</p></div>
-            <div class="agendado--info--nome">João Pedro</div>
+            <div class="agendado--info--sala"><span>Sala: </span> <p>dia:20</p></div>
+            <div class="agendado--info--nome">nome: 'John Doe'</div>
           </div>
-          <div class="agendado--horario"><span>11:00</span> - <span>12:00</span></div>
+          <div class="agendado--horario"><span>horario: 25</span> - <span>horario: 25</span></div>
         </div>
       </div>
+      
     </div>
   </div> 
 
@@ -56,3 +62,4 @@
     </div>
 </section>
 </div>
+<app-planta-predio></app-planta-predio>

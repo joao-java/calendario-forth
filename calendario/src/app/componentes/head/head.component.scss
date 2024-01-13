@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    list-style: none;
+}
+
+.container--head{
+    height: 5rem;
+    width: 100%;
+    header{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding: 1rem 2rem;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo{
+            height: 100%;
+            img{
+                height: 100%;
+            }
+        }
+        .falta--campanha--main{
+            display: flex;
+            gap: 10px;
+            width: 25%;
+            box-shadow: 1px 0px 5px  #000;
+            height: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            .falta--campanha{
+                text-transform: uppercase;
+                font-size: 14px;
+                text-align: center;
+            }
+            .falta--campanha--dias{
+                display: flex;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}

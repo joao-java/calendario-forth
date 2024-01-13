@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { HeadComponent } from './componentes/head/head.component';
+import { PlantaPredioComponent } from './componentes/planta-predio/planta-predio.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, HeadComponent, PlantaPredioComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -109,17 +111,19 @@ export class AppComponent {
   agendado() {
     
     this.dados = {
-      dado1:{
+      0:{
       dia:21,
-      mes:1,
+      mes:'1',
       nome: 'John Doe',
-      horario: 25
+      horario: 25,
+      id:'211'
       },
-      dado2:{
+      1:{
         dia:20,
-        mes:1,
+        mes:'1',
         nome: 'John Doe',
-        horario: 25
+        horario: 25,
+        id:'211'
       }
     } 
   }
