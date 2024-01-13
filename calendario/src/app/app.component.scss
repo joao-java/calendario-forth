@@ -15,8 +15,9 @@
     grid-template-columns: repeat(7, 1fr); /* 7 colunas, cada uma com largura igual */
     gap: 10px;
     text-transform: uppercase;
+    padding: 2rem 0;
     .semana{
-        text-align: center;
+        text-align: left;
     }
 }
 .calendario--main{
@@ -52,21 +53,57 @@
     grid-column-start: 7; /* Inicia na segunda coluna */
 }
 .dia{
+    font-family: Arial, Helvetica, sans-serif;
     height: 150px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    border-radius: 5px;
-    box-shadow: 1px 0px 5px #000 ;
-    position: relative;
+    border-radius: 3px;
+    border-top: 2px solid #000;
     overflow: hidden;
+    padding: 0.5rem 0;
+    #dia{
+        width: 100%;
+        height: 20%;
+        font-size: 25px;
+        padding-bottom: 2rem;
+    }
+    .agendado{
+        bottom: 0;
+        width: 100%;
+        height: 80%;
+        .agendado--main{
+            .agendado--info{
+                display: flex;
+                font-size: 13px;
+                .agendado--info--sala{
+                    display: flex;
+                    padding-right: 10px;
+                    span{
+                        padding-right: 3px;
+                    }
+                }
+                .agendado--info--nome{
+                    font-size: 12px;
+                }
+            }
+        }
+        .agendado--horario{
+            font-size: 14px;
+            color: #686868;
+        }
+    }
 }
-.agendado{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 25%;
-    border: 1px rgb(218, 218, 218) solid;
+.dia--atual{
+    background: #f1f1f1;
+    border-top: 2px solid #129e12;
+    #dia{
+        color: #129e12;
+    }
+}
+.semana--atual{
+    color: #129e12;
 }
 
 // insert 

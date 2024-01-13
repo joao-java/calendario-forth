@@ -1,17 +1,25 @@
 <div id="container">
   <div class="diasDaSemana">
-    <div class="semana">domingo</div>
-    <div class="semana">segunda</div>
-    <div class="semana">terça</div>
-    <div class="semana">quarta</div>
-    <div class="semana">quinta</div>
-    <div class="semana">sexta</div>
-    <div class="semana">sabado</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Domingo' }">domingo</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Segunda-feira' }">segunda</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Terça-feira' }">terça</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Quarta-feira' }">quarta</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Quinta-feira' }">quinta</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Sexta-feira' }">sexta</div>
+    <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Sábado' }">sabado</div>
   </div>
   <div class="calendario--main">
-    <div *ngFor="let dia of diasNumber()" class="dia"  [ngClass]="{'start-from-column-3': dia === 1}" [ngClass]="{'passou': dia < diaAtuall() }">
-      <div>{{ dia }}</div>
-      <div class="agendado"></div>
+    <div *ngFor="let dia of diasNumber()" class="dia " [ngClass]="{'start-from-column-2': dia === 1, 'passou': dia < diaAtuall(), 'dia--atual': dia === diaAtuall() }" >
+      <div id="dia">{{ dia }}</div>
+      <div class="agendado">
+        <div class="agendado--main">
+          <div class="agendado--info">
+            <div class="agendado--info--sala"><span>Sala: </span> <p>1</p></div>
+            <div class="agendado--info--nome">João Pedro</div>
+          </div>
+          <div class="agendado--horario"><span>11:00</span> - <span>12:00</span></div>
+        </div>
+      </div>
     </div>
   </div> 
 

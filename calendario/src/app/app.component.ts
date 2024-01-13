@@ -35,7 +35,7 @@ export class AppComponent {
     return console.log("Ultimo dia do mes: "+ ultimoDiaMes +"\n"
     ,"Hoje: "+ hoje.getDate() +"\n"
     ,"dia da semana em numero: "+ diaDaSemana +"\n"
-    ,"dia da semana: "+diasDaSemana[diaDaSemana] +"\n"
+    ,"dia da semana: "+diasDaSemana[diaDaSemana+1] +"\n"
     ,"mes atual: "+(hoje.getMonth()+1) +"\n"
     , "todos dias do mes: "+ diasDoMes)
   }
@@ -52,6 +52,16 @@ export class AppComponent {
     return `start-from-column-${hoje.getDay()}`;
   }
   
+  //semana atual
+  getSemanaAtual():string{
+    const hoje = new Date();
+    const primeiroDiaMes = new Date(hoje.getFullYear(), 1);
+    const diaDaSemana = primeiroDiaMes.getDay();
+    const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    const diaDaSemanaAtual = diasDaSemana[diaDaSemana+2];
+
+    return diaDaSemanaAtual;
+  }
   //função me retorna a quantidade de dias no mes
   diasNumber(): number[] {
     const hoje = new Date();
@@ -93,6 +103,25 @@ export class AppComponent {
   };
   enviarFormulario(){
     console.log('Dados do formulario: '+ this.formData);
+  }
+
+  dados: any;
+  agendado() {
+    
+    this.dados = {
+      dado1:{
+      dia:21,
+      mes:1,
+      nome: 'John Doe',
+      horario: 25
+      },
+      dado2:{
+        dia:20,
+        mes:1,
+        nome: 'John Doe',
+        horario: 25
+      }
+    } 
   }
 
 }
