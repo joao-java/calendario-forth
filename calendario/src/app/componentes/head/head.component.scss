@@ -36,12 +36,25 @@
                 text-transform: uppercase;
                 font-size: 14px;
                 text-align: center;
+                span{
+                    font-weight:600;
+
+                }
             }
             .falta--campanha--dias{
                 display: flex;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+            }
+        }
+        .descri--mes--atual{
+            font-size: 25px;
+            font-weight:600;
+
+            span{
+                font-size: 15px;
+                font-weight: 100;
             }
         }
     }

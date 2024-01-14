@@ -17,12 +17,16 @@
       </div>
 
       <div class="agendado" >
-        <div class="agendado--main">
-          <div class="agendado--info">
-            <div class="agendado--info--sala"><span>Sala: </span> <p>dia:20</p></div>
-            <div class="agendado--info--nome">nome: 'John Doe'</div>
-          </div>
-          <div class="agendado--horario"><span>horario: 25</span> - <span>horario: 25</span></div>
+        <div class="agendado--main" *ngFor="let produto of produtosList">
+
+          <ng-container *ngIf="dia === produto.dia">
+            <div class="agendado--info">
+              <div class="agendado--info--sala"><span>Sala: </span> <p>{{ produto.sala }}</p></div>
+              <div class="agendado--info--nome">{{ produto.nome }}</div>
+            </div>
+            <div class="agendado--horario"><span>{{ produto.horarioInicio }}</span> - <span>{{ produto.horarioTermino }}</span></div>
+          </ng-container>
+          
         </div>
       </div>
       

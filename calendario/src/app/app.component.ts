@@ -56,25 +56,20 @@ export class AppComponent {
   
   //semana atual
   getSemanaAtual():string{
-    const hoje = new Date();
-    const primeiroDiaMes = new Date(hoje.getFullYear(), 1);
-    const diaDaSemana = primeiroDiaMes.getDay();
     const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
-    const diaDaSemanaAtual = diasDaSemana[diaDaSemana+2];
-
-    return diaDaSemanaAtual;
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay();
+    const diaSemanaAtual = diasDaSemana[diaDaSemana];
+    return diaSemanaAtual;
   }
   //função me retorna a quantidade de dias no mes
   diasNumber(): number[] {
     const hoje = new Date();
     const ultimoDiaMes = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0).getDate();
-
     const diasDoMes: number[] = [];
-
     for (let dia = 1; dia <= ultimoDiaMes; dia++) {
       diasDoMes.push(dia);
     }
-
     return diasDoMes;
   }
 
@@ -88,7 +83,6 @@ export class AppComponent {
     return `dia-${dia} start-from-column-${diasDaSemanaa[diaDaSemanaa]}`;
   }
   diaAtual = this.diasNoMesAtual();
-  
   showInsert = false;
   toggleInsert(){
     this.showInsert = !this.showInsert;
@@ -107,25 +101,86 @@ export class AppComponent {
     console.log('Dados do formulario: '+ this.formData);
   }
 
+  // AGENDAMENTO ===================================
+
+  arrayData: any[] | undefined;
   dados: any;
-  agendado() {
-    
+  produtosList: any[] = []; // Certifique-se de ajustar o tipo conforme a estrutura dos seus produtos
+
+  ngOnInit() {
     this.dados = {
-      0:{
-      dia:21,
-      mes:'1',
-      nome: 'John Doe',
-      horario: 25,
-      id:'211'
+      0: {
+        nome: 'João VItor Melo',
+        dia: 14,
+        mes: 1,
+        sala:1,
+        horarioInicio: '12:30',
+        horarioTermino: '13:30'
       },
-      1:{
-        dia:20,
-        mes:'1',
-        nome: 'John Doe',
-        horario: 25,
-        id:'211'
+      1: {
+        nome: 'João Vitor Melo',
+        dia: 14,
+        mes: 1,
+        sala:1,
+        horarioInicio: '12:30',
+        horarioTermino: '13:30'
+      },
+      3: {
+        nome: 'João Vitor Melo',
+        dia: 14,
+        mes: 1,
+        sala:1,
+        horarioInicio: '12:30',
+        horarioTermino: '13:30'
+      },
+      4: {
+        nome: 'João Vitor Melo',
+        dia: 14,
+        mes: 1,
+        sala:1,
+        horarioInicio: '12:30',
+        horarioTermino: '13:30'
+      },
+      5: {
+        nome: 'João Vitor Melo',
+        dia: 14,
+        mes: 1,
+        sala:1,
+        horarioInicio: '12:30',
+        horarioTermino: '13:30'
+      },
+      6: {
+        nome: 'João Vitor Melo',
+        dia: 15,
+        mes: 1,
+        sala:1,
+        horarioInicio: '12:30',
+        horarioTermino: '13:30'
       }
-    } 
+    };
+
+    this.agendado(); // Chama o método agendado aqui
   }
+
+  agendado() {
+    if (this.dados) {
+      this.arrayData = Object.values(this.dados);
+      
+      // Agora você pode iterar sobre this.arrayData
+      this.arrayData.forEach(produto => {
+        const row = {
+          nome: produto.nome,  // Certifique-se de ajustar conforme a estrutura do seu objeto
+          sala: produto.sala,
+          horarioInicio: produto.horarioInicio,  // Ajuste conforme necessário
+          horarioTermino: produto.horarioTermino,  // Ajuste conforme necessário
+          dia: produto.dia,  
+        };
+
+        this.produtosList.push(row);
+      });
+    }
+  }
+
+  // horario em tempo real
 
 }
