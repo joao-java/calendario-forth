@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeadComponent } from './componentes/head/head.component';
 import { PlantaPredioComponent } from './componentes/planta-predio/planta-predio.component';
-import { AgendamentoService } from './componentes/agendamento.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeadComponent, PlantaPredioComponent, AgendamentoService],
+  imports: [CommonModule, RouterOutlet, HeadComponent, PlantaPredioComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -181,20 +180,21 @@ export class AppComponent {
       });
     }
   }
-  constructor(private agendamentoService: AgendamentoService) {}
 
-  ngGetAgendamento(): void {
-    this.agendamentoService.getAgendamentos().subscribe(
-      data => {
-        console.log('Dados do agendamento:', data);
-        // Aqui você pode fazer o que quiser com os dados, como exibir no console
-      },
-      error => {
-        console.error('Erro ao obter agendamentos', error);
-        // Lide com o erro da maneira que preferir
-      }
-    );
-  }
+ //================================= GETBANCO =================================
+  // constructor(private agendamentoService: AgendamentoService) {}
+  // ngGetAgendamento(): void {
+  //   this.agendamentoService.getAgendamentos().subscribe(
+  //     data => {
+  //       console.log('Dados do agendamento:', data);
+  //       // Aqui você pode fazer o que quiser com os dados, como exibir no console
+  //     },
+  //     error => {
+  //       console.error('Erro ao obter agendamentos', error);
+  //       // Lide com o erro da maneira que preferir
+  //     }
+  //   );
+  // }
 
 
 }
