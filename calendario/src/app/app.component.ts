@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeadComponent } from './componentes/head/head.component';
 import { PlantaPredioComponent } from './componentes/planta-predio/planta-predio.component';
+import { HttpClient } from '@angular/common/http';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeadComponent, PlantaPredioComponent],
+  imports: [CommonModule, RouterOutlet, HeadComponent, PlantaPredioComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -111,7 +113,7 @@ export class AppComponent {
     this.dados = {
       0: {
         nome: 'João VItor Melo',
-        dia: 14,
+        dia: 31,
         mes: 1,
         sala:1,
         horarioInicio: '12:30',
@@ -119,7 +121,7 @@ export class AppComponent {
       },
       1: {
         nome: 'João Vitor Melo',
-        dia: 14,
+        dia: 16,
         mes: 1,
         sala:1,
         horarioInicio: '12:30',
@@ -127,7 +129,7 @@ export class AppComponent {
       },
       3: {
         nome: 'João Vitor Melo',
-        dia: 14,
+        dia: 19,
         mes: 1,
         sala:1,
         horarioInicio: '12:30',
@@ -135,7 +137,7 @@ export class AppComponent {
       },
       4: {
         nome: 'João Vitor Melo',
-        dia: 14,
+        dia: 20,
         mes: 1,
         sala:1,
         horarioInicio: '12:30',
@@ -143,7 +145,7 @@ export class AppComponent {
       },
       5: {
         nome: 'João Vitor Melo',
-        dia: 14,
+        dia: 28,
         mes: 1,
         sala:1,
         horarioInicio: '12:30',
@@ -182,19 +184,20 @@ export class AppComponent {
   }
 
  //================================= GETBANCO =================================
-  // constructor(private agendamentoService: AgendamentoService) {}
-  // ngGetAgendamento(): void {
-  //   this.agendamentoService.getAgendamentos().subscribe(
-  //     data => {
-  //       console.log('Dados do agendamento:', data);
-  //       // Aqui você pode fazer o que quiser com os dados, como exibir no console
-  //     },
-  //     error => {
-  //       console.error('Erro ao obter agendamentos', error);
-  //       // Lide com o erro da maneira que preferir
-  //     }
-  //   );
-  // }
+// items: any[] = [];
+
+// constructor(private http: HttpClient) {}
+
+// nggOnInit() {
+//   this.http.get<any[]>('http://localhost:3000/agendamento').subscribe(
+//     (data) => {
+//       this.items = data;
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
 
 
 }

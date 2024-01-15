@@ -9,8 +9,30 @@
 
 .planta--main{
     width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 1rem 4rem;
+    gap: 10px;
+    .info--planta{
+        width: 100%;
+        padding: 0 10rem;
+        .main--info{
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            .info{
+                display: grid;
+                background: #f1f1f1;
+                padding: 1rem;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
     .planta{
         img{
             width: 100%;
