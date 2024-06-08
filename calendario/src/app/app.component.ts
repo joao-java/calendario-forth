@@ -1,21 +1,50 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { HeadComponent } from './componentes/head/head.component';
 import { PlantaPredioComponent } from './componentes/planta-predio/planta-predio.component';
-import { HttpClient } from '@angular/common/http';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { TarefasService } from './tarefas.service';
+import { Observable } from 'rxjs';
+import { Tarefa } from './tarefa.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeadComponent, PlantaPredioComponent, FooterComponent],
+  imports: [CommonModule,HeadComponent, PlantaPredioComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'calendario';
   
+  simpleReqAgendamentosObs$!: Observable<Tarefa[]>; //tarefas
+
+  newlyAgendamentos: Tarefa[] = [];
+
+  constructor(private tarefasService: TarefasService){}
+
+  getSimpleHttpRequest(){
+    this.simpleReqAgendamentosObs$ = this.tarefasService.getTarefas();
+  }
+  
+  ngOnInit() {
+    this.getSimpleHttpRequest();
+  }
+
+  saveAgendamento(name: string, dia: number, mes: number, sala: number, horarioInicio: string, horarioTermino: string) {
+    let p = { name, dia, mes, sala, horarioInicio, horarioTermino }
+    this.tarefasService.saveTarafas(p)
+    .subscribe(
+      (p: Tarefa) => {
+        console.log(p);
+        this.newlyAgendamentos.push(p);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  // -------------------------------------------------------------
   public diasNoMesAtual(){
     
     // quantidade de dias no mes
@@ -36,12 +65,6 @@ export class AppComponent {
       
     }
 
-    return console.log("Ultimo dia do mes: "+ ultimoDiaMes +"\n"
-    ,"Hoje: "+ hoje.getDate() +"\n"
-    ,"dia da semana em numero: "+ diaDaSemana +"\n"
-    ,"dia da semana: "+diasDaSemana[diaDaSemana+1] +"\n"
-    ,"mes atual: "+(hoje.getMonth()+1) +"\n"
-    , "todos dias do mes: "+ diasDoMes)
   }
 
   //dia atual
@@ -88,7 +111,7 @@ export class AppComponent {
   showInsert = false;
   toggleInsert(){
     this.showInsert = !this.showInsert;
-    console.log("feitoooooooooooooooooooooooo"+this.showInsert);
+    // console.log("feitoooooooooooooooooooooooo"+this.showInsert);
   }
 
   formData = {
@@ -100,104 +123,7 @@ export class AppComponent {
     horaTermino:'321'
   };
   enviarFormulario(){
-    console.log('Dados do formulario: '+ this.formData);
+    // console.log('Dados do formulario: '+ this.formData);
   }
-
-  // AGENDAMENTO ===================================
-
-  arrayData: any[] | undefined;
-  dados: any;
-  produtosList: any[] = []; // Certifique-se de ajustar o tipo conforme a estrutura dos seus produtos
-
-  ngOnInit() {
-    this.dados = {
-      0: {
-        nome: 'João VItor Melo',
-        dia: 31,
-        mes: 1,
-        sala:1,
-        horarioInicio: '12:30',
-        horarioTermino: '13:30'
-      },
-      1: {
-        nome: 'João Vitor Melo',
-        dia: 16,
-        mes: 1,
-        sala:1,
-        horarioInicio: '12:30',
-        horarioTermino: '13:30'
-      },
-      3: {
-        nome: 'João Vitor Melo',
-        dia: 19,
-        mes: 1,
-        sala:1,
-        horarioInicio: '12:30',
-        horarioTermino: '13:30'
-      },
-      4: {
-        nome: 'João Vitor Melo',
-        dia: 20,
-        mes: 1,
-        sala:1,
-        horarioInicio: '12:30',
-        horarioTermino: '13:30'
-      },
-      5: {
-        nome: 'João Vitor Melo',
-        dia: 28,
-        mes: 1,
-        sala:1,
-        horarioInicio: '12:30',
-        horarioTermino: '13:30'
-      },
-      6: {
-        nome: 'João Vitor Melo',
-        dia: 15,
-        mes: 1,
-        sala:1,
-        horarioInicio: '12:30',
-        horarioTermino: '13:30'
-      }
-    };
-
-    this.agendado(); // Chama o método agendado aqui
-  }
-
-  agendado() {
-    if (this.dados) {
-      this.arrayData = Object.values(this.dados);
-      
-      // Agora você pode iterar sobre this.arrayData
-      this.arrayData.forEach(produto => {
-        const row = {
-          nome: produto.nome,  // Certifique-se de ajustar conforme a estrutura do seu objeto
-          sala: produto.sala,
-          horarioInicio: produto.horarioInicio,  // Ajuste conforme necessário
-          horarioTermino: produto.horarioTermino,  // Ajuste conforme necessário
-          dia: produto.dia,  
-        };
-
-        this.produtosList.push(row);
-      });
-    }
-  }
-
- //================================= GETBANCO =================================
-// items: any[] = [];
-
-// constructor(private http: HttpClient) {}
-
-// nggOnInit() {
-//   this.http.get<any[]>('http://localhost:3000/agendamento').subscribe(
-//     (data) => {
-//       this.items = data;
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }
-
 
 }

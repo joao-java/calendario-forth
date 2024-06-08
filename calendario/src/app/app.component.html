@@ -13,16 +13,15 @@
     <div *ngFor="let dia of diasNumber()" class="dia " [ngClass]="{'start-from-column-2': dia === 1, 'passou': dia < diaAtuall(), 'dia--atual': dia === diaAtuall() }" >
       <div id="dia">
         {{ dia }}
-       
       </div>
 
-      <div class="agendado" >
-        <div class="agendado--main" *ngFor="let produto of produtosList">
+      <div class="agendado" *ngIf="simpleReqAgendamentosObs$ | async as prods">
+        <div class="agendado--main" *ngFor="let produto of prods">
 
           <ng-container *ngIf="dia === produto.dia">
             <div class="agendado--info">
               <div class="agendado--info--sala"><span>Sala: </span> <p>{{ produto.sala }}</p></div>
-              <div class="agendado--info--nome">{{ produto.nome }}</div>
+              <div class="agendado--info--nome">{{ produto.name }}</div>
             </div>
             <div class="agendado--horario"><span>{{ produto.horarioInicio }}</span> - <span>{{ produto.horarioTermino }}</span></div>
           </ng-container>
@@ -43,24 +42,24 @@
             <div class="body__data ">
                 <div>
                     <label for="texto"> Nome: </label>
-                    <input type="text" id="nome">
+                    <input type="text" #name>
                     <label for="diaAtual" > Dia: </label>
-                    <input type="number" id="FdiaAtual" min="1" max="31" >
+                    <input type="number" #dia min="1" max="31" >
                     <label for="diaAtual" > Mes: </label>
-                    <input type="number" id="mes" min="1" max="12" >
+                    <input type="number" #mes min="1" max="12" >
                 </div>
 
                 <div>
                   <label for="Sala"> Sala: </label>
-                  <input type="number" id="sala" min="1" max="4" >
+                  <input type="number" #sala min="1" max="4" >
                     <label for="horaInicio"> Hora Inicio: </label>
-                    <input type="time" id="horaInicio">
+                    <input type="time" #horarioInicio>
                     <label for="horaTermino"> Hora Termino: </label>
-                    <input type="time" id="horaTermino">
+                    <input type="time" #horarioTermino>
                 </div>
             </div>
             <div class="data__insert" >
-                <input  class="button" type="submit" id="enviar" value="Enviar" (click)="enviarFormulario()" >
+                <input  class="button" type="submit" (click)="saveAgendamento(name.value, +dia.value,+mes.value,+sala.value,horarioInicio.value,horarioTermino.value)" >
             </div>
         </form>
     </div>
