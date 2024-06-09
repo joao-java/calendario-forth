@@ -30,9 +30,9 @@ export class AppComponent {
     this.getSimpleHttpRequest();
   }
 
-  saveAgendamento(name: string, dia: number, mes: number, sala: number, horarioInicio: string, horarioTermino: string) {
-    let p = { name, dia, mes, sala, horarioInicio, horarioTermino }
-    this.tarefasService.saveTarafas(p)
+  saveAgendamento(name: string, dia: number, mes: number, sala: number, horaInicio: string, horaTermino: string) {
+    let p = { name, dia, mes, sala, horaInicio, horaTermino }
+    this.tarefasService.postTarafas(p)
     .subscribe(
       (p: Tarefa) => {
         console.log(p);

@@ -23,7 +23,7 @@
               <div class="agendado--info--sala"><span>Sala: </span> <p>{{ produto.sala }}</p></div>
               <div class="agendado--info--nome">{{ produto.name }}</div>
             </div>
-            <div class="agendado--horario"><span>{{ produto.horarioInicio }}</span> - <span>{{ produto.horarioTermino }}</span></div>
+            <div class="agendado--horario"><span>{{ produto.horaInicio }}</span> - <span>{{ produto.horaTermino }}</span></div>
           </ng-container>
           
         </div>
@@ -53,13 +53,13 @@
                   <label for="Sala"> Sala: </label>
                   <input type="number" #sala min="1" max="4" >
                     <label for="horaInicio"> Hora Inicio: </label>
-                    <input type="time" #horarioInicio>
+                    <input type="time" #horaInicio>
                     <label for="horaTermino"> Hora Termino: </label>
-                    <input type="time" #horarioTermino>
+                    <input type="time" #horaTermino>
                 </div>
             </div>
             <div class="data__insert" >
-                <input  class="button" type="submit" (click)="saveAgendamento(name.value, +dia.value,+mes.value,+sala.value,horarioInicio.value,horarioTermino.value)" >
+                <input  class="button" type="submit" (click)="saveAgendamento(name.value, +dia.value,+mes.value,+sala.value,horaInicio.value,horaTermino.value)" >
             </div>
         </form>
     </div>

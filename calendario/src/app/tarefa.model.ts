@@ -3,6 +3,6 @@ export interface Tarefa {
     dia:Number;
     mes:Number;
     sala:Number;
-    horarioInicio:string;
-    horarioTermino:string;
+    horaInicio:string;
+    horaTermino:string;
 }

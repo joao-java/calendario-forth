@@ -16,7 +16,7 @@ export class TarefasService {
     return this.http.get<Tarefa[]>(`${this.url}/agendamentos` );
   }
 
-  saveTarafas(p: Tarefa): Observable<Tarefa>{
+  postTarafas(p: Tarefa): Observable<Tarefa>{
     return this.http.post<Tarefa>(`${this.url}/agendamentos`, p);
   }
 }
