@@ -10,7 +10,7 @@
     <div class="semana" [ngClass]="{'semana--atual': getSemanaAtual() === 'Sábado' }">sabado</div>
   </div>
   <div class="calendario--main">
-    <div *ngFor="let dia of diasNumber()" class="dia " [ngClass]="{'start-from-column-2': dia === 1, 'passou': dia < diaAtuall(), 'dia--atual': dia === diaAtuall() }" >
+    <div *ngFor="let dia of diasNumber()" class="dia " [ngClass]="{'start-from-column-7': dia === 1, 'passou': dia < diaAtuall(), 'dia--atual': dia === diaAtuall() }" >
       <div id="dia">
         {{ dia }}
       </div>
