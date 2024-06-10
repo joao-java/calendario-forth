@@ -39,21 +39,33 @@ app.get('/agendamentoserr', function (req, res) {
         }, 2000);
 });
 
-app.post('/agendamentos', function (req, res) {
-    p = new Tarefas({
-    name: req.body.name,
-    dia: req.body.dia,
-    mes: req.body.mes,
-    sala: req.body.sala,
-    horaInicio: req.body.horaInicio,
-    horaTermino: req.body.horaTermino
+
+app.post('/agendamentos', (req, res) => {
+    // Verifique se todos os campos necessários estão presentes no corpo da solicitação
+    const { name, dia, mes, sala, horaInicio, horaTermino } = req.body;
+
+    if (!name || !dia || !mes || !sala || !horaInicio || !horaTermino) {
+        return res.status(400).send({ error: 'Todos os campos são necessários.' });
+    }
+
+    const p = new Tarefas({
+        name,
+        dia,
+        mes,
+        sala,
+        horaInicio,
+        horaTermino
     });
-    p.save((err, prod)=>{
-        if(err)
-            res.status(500).send(err);
-        else
-        res.status(200),send(prod);
-    });
+
+    p.save()
+        .then(result => {
+            console.log('Agendamento salvo com sucesso:', result);
+            res.status(201).send(result);  // Retorne o status 201 para criação bem-sucedida
+        })
+        .catch(err => {
+            console.error('Erro ao salvar agendamento:', err);
+            res.status(500).send({ error: 'Erro ao salvar agendamento' });
+        });
 });
 
 app.listen(3000, () => {
