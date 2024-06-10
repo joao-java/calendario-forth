@@ -30,15 +30,6 @@ try {
 }
 });
 
-app.get('/agendamentoserr', function (req, res) {
-    setTimeout(
-        () => {
-            res.status(500).send({
-                msg: "Error message from the server"
-            });
-        }, 2000);
-});
-
 
 app.post('/agendamentos', (req, res) => {
     // Verifique se todos os campos necessários estão presentes no corpo da solicitação
