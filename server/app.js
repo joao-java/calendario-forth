@@ -39,21 +39,21 @@ app.get('/agendamentoserr', function (req, res) {
         }, 2000);
 });
 
-app.post('/agendamentos', async (req, res) => {
-try {
-    const p = new Tarefa({
+app.post('/agendamentos', function (req, res) {
+    p = new Tarefas({
     name: req.body.name,
     dia: req.body.dia,
     mes: req.body.mes,
     sala: req.body.sala,
-    horarioInicio: req.body.horarioInicio,
-    horarioTermino: req.body.horarioTermino
+    horaInicio: req.body.horaInicio,
+    horaTermino: req.body.horaTermino
     });
-    const tarefaSalva = await p.save();
-    res.status(200).send(tarefaSalva);
-} catch (err) {
-    res.status(500).send(err);
-}
+    p.save((err, prod)=>{
+        if(err)
+            res.status(500).send(err);
+        else
+        res.status(200),send(prod);
+    });
 });
 
 app.listen(3000, () => {
