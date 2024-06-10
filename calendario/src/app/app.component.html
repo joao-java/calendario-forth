@@ -16,8 +16,9 @@
       </div>
 
       <div class="agendado" *ngIf="simpleReqAgendamentosObs$ | async as prods">
-        <div class="agendado--main" *ngFor="let produto of prods">
-
+        <div class="agendado--main" 
+        *ngFor="let produto of prods" 
+        [ngClass]="'agendado--mainSala-' + produto.sala">
           <ng-container *ngIf="dia === produto.dia">
             <div class="agendado--info">
               <div class="agendado--info--sala"><span>Sala: </span> <p>{{ produto.sala }}</p></div>

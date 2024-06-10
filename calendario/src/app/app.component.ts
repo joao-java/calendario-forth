@@ -16,7 +16,7 @@ import { Tarefa } from './tarefa.model';
 })
 export class AppComponent {
   
-  simpleReqAgendamentosObs$!: Observable<Tarefa[]>; //tarefas
+  simpleReqAgendamentosObs$!: Observable<Tarefa[]>;
 
   newlyAgendamentos: Tarefa[] = [];
 
@@ -114,16 +114,5 @@ export class AppComponent {
     // console.log("feitoooooooooooooooooooooooo"+this.showInsert);
   }
 
-  formData = {
-    nome:'re',
-    dia:9,
-    mes:10,
-    sala:11,
-    horaInicial:'1',
-    horaTermino:'321'
-  };
-  enviarFormulario(){
-    // console.log('Dados do formulario: '+ this.formData);
-  }
 
 }

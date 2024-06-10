@@ -14,6 +14,7 @@ export class HeadComponent {
   minutos: number = 0;
   segundos: number = 0;
 
+
   ngOnInit() {
     // Defina a data de destino para a contagem regressiva
     const dataAlvo = new Date("1 August 2024 01:00:00 GMT-0300").getTime();
@@ -29,4 +30,14 @@ export class HeadComponent {
       this.segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
     }, 1000);
   }
+  getNomeMesAtual(): string {
+    const meses = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+    const dataAtual = new Date();
+    const indiceMes = dataAtual.getMonth();
+    return meses[indiceMes];
+  }
+  
 }
