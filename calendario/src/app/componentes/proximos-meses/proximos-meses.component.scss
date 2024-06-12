@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+}
+
+.container{
+    height: 500px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    section{
+        height: 100%;
+        width: 100%;
+        background: white;
+    }
+}

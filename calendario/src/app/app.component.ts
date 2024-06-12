@@ -6,11 +6,12 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { TarefasService } from './tarefas.service';
 import { Observable } from 'rxjs';
 import { Tarefa } from './tarefa.model';
+import { ProximosMesesComponent } from './componentes/proximos-meses/proximos-meses.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,HeadComponent, PlantaPredioComponent, FooterComponent],
+  imports: [CommonModule,HeadComponent, PlantaPredioComponent, FooterComponent, ProximosMesesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
