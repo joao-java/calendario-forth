@@ -18,8 +18,8 @@ import { ProximosMesesComponent } from './componentes/proximos-meses/proximos-me
 export class AppComponent {
   
   simpleReqAgendamentosObs$!: Observable<Tarefa[]>;
-
   newlyAgendamentos: Tarefa[] = [];
+  mensagemDeAviso: string | null = null;
 
   constructor(private tarefasService: TarefasService){}
 
@@ -31,18 +31,38 @@ export class AppComponent {
     this.getSimpleHttpRequest();
   }
 
+
   saveAgendamento(name: string, dia: number, mes: number, sala: number, horaInicio: string, horaTermino: string) {
-    let p = { name, dia, mes, sala, horaInicio, horaTermino }
-    this.tarefasService.postTarafas(p)
-    .subscribe(
-      (p: Tarefa) => {
-        console.log(p);
-        this.newlyAgendamentos.push(p);
-      },
-      (err) => {
-        console.log(err);
-      }
+    // Verifica se há conflito de agendamento
+    console.log(this.newlyAgendamentos);
+
+    const conflito = this.newlyAgendamentos.some(agendamento =>
+      agendamento.dia === dia &&
+      agendamento.mes === mes &&
+      agendamento.sala === sala &&
+      (
+        (horaInicio >= agendamento.horaInicio && horaInicio < agendamento.horaTermino) ||
+        (horaTermino > agendamento.horaInicio && horaTermino <= agendamento.horaTermino) ||
+        (horaInicio <= agendamento.horaInicio && horaTermino >= agendamento.horaTermino)
+      )
     );
+
+    if (conflito) {
+      this.mensagemDeAviso = 'Já existe uma reserva para esta sala no mesmo dia e horário.';
+    } else {
+      this.mensagemDeAviso = null;
+      let p = { name, dia, mes, sala, horaInicio, horaTermino };
+      this.tarefasService.postTarafas(p)
+        .subscribe(
+          (p: Tarefa) => {
+            console.log(p);
+            this.newlyAgendamentos.push(p);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    }
   }
 
   // -------------------------------------------------------------

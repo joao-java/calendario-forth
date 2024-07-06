@@ -16,19 +16,24 @@
       </div>
 
       <div class="agendado" *ngIf="simpleReqAgendamentosObs$ | async as prods">
-        <div class="agendado--main" 
-        *ngFor="let produto of prods" 
-        [ngClass]="'agendado--mainSala-' + produto.sala">
+        <ng-container *ngFor="let produto of prods">
           <ng-container *ngIf="dia === produto.dia">
-            <div class="agendado--info">
-              <div class="agendado--info--sala"><span>Sala: </span> <p>{{ produto.sala }}</p></div>
-              <div class="agendado--info--nome">{{ produto.name }}</div>
+            <div class="agendado--main" [ngClass]="'agendado--mainSala-' + produto.sala">
+              <div class="agendado--info">
+                <div class="agendado--info--sala">
+                  <span>Sala: </span>
+                  <p>{{ produto.sala }}</p>
+                </div>
+                <div class="agendado--info--nome">{{ produto.name }}</div>
+              </div>
+              <div class="agendado--horario">
+                <span>{{ produto.horaInicio }}</span> - <span>{{ produto.horaTermino }}</span>
+              </div>
             </div>
-            <div class="agendado--horario"><span>{{ produto.horaInicio }}</span> - <span>{{ produto.horaTermino }}</span></div>
           </ng-container>
-          
-        </div>
+        </ng-container>
       </div>
+      
       
     </div>
   </div> 
@@ -62,9 +67,10 @@
             <div class="data__insert" >
                 <input  class="button" type="submit" (click)="saveAgendamento(name.value, +dia.value,+mes.value,+sala.value,horaInicio.value,horaTermino.value)" >
             </div>
+            <div *ngIf="mensagemDeAviso" class="alert">{{ mensagemDeAviso }}</div>
         </form>
     </div>
-</section>
+  </section>
 </div>
 <app-proximos-meses></app-proximos-meses>
 <app-planta-predio></app-planta-predio>
